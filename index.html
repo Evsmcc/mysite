@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chinese Chess Game</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chinese Chess Game</h1>
+        <p>欢迎来到中国象棋游戏</p>
+        
+        <div style="margin: 20px 0; text-align: left; display: inline-block;">
+            <div style="margin: 10px 0;">
+                <label for="chessId">Chess ID:</label><br>
+                <input type="text" id="chessId" name="chessId" placeholder="Enter Chess ID" style="padding: 8px; width: 100%;">
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Enter Name" style="padding: 8px; width: 100%;">
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label for="roomId">Room ID:</label><br>
+                <input type="text" id="roomId" name="roomId" placeholder="Enter Room ID" style="padding: 8px; width: 100%;">
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label for="player1">Player 1:</label><br>
+                <input type="text" id="player1" name="player1" placeholder="Enter Player 1" style="padding: 8px; width: 100%;">
+            </div>
+            
+            <div style="margin: 10px 0;">
+                <label for="player2">Player 2:</label><br>
+                <input type="text" id="player2" name="player2" placeholder="Enter Player 2" style="padding: 8px; width: 100%;">
+            </div>
+        </div>
+        
+        <a href="chineseChess.html" class="btn" onclick="startGame()">开始游戏</a>
+    </div>
+    
+    <script>
+        function startGame() {
+            // 获取所有输入字段的值
+            const chessId = document.getElementById('chessId').value;
+            const name = document.getElementById('name').value;
+            const roomId = document.getElementById('roomId').value;
+            const player1 = document.getElementById('player1').value;
+            const player2 = document.getElementById('player2').value;
+            
+            // 构建查询参数
+            const params = new URLSearchParams();
+            if (chessId) params.append('chessId', chessId);
+            if (name) params.append('name', name);
+            if (roomId) params.append('roomId', roomId);
+            if (player1) params.append('player1', player1);
+            if (player2) params.append('player2', player2);
+            
+            // 更新链接的href属性以包含查询参数
+            const link = document.querySelector('.btn');
+            link.href = 'chineseChess.html' + (params.toString() ? '?' + params.toString() : '');
+        }
+    </script>
+</body>
+</html>
